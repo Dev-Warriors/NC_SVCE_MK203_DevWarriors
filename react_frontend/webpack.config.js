@@ -10,7 +10,7 @@ const DevToolPlugin = PROD
     : webpack.EvalSourceMapDevToolPlugin;
 
 const config = {
-    entry: ["./src/index"],
+    entry: ["@babel/polyfill", "./src/index"],
     output: {
         filename: DEV ? "bundle.js" : "bundle.[hash].js",
         path: path.resolve(__dirname, "dist"),

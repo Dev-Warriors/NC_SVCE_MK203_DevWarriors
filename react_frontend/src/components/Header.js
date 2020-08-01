@@ -18,6 +18,9 @@ class Header extends Component {
                     </li>,
                     <li className="nav-item" key="logout">
                         <Link className="nav-link" to="/logout">Logout</Link>
+                    </li>,
+                    <li className="nav-item" key="imageCapture">
+                        <Link className="nav-link" to="/image_upload">Image Capture</Link>
                     </li>
                 ]
             );
