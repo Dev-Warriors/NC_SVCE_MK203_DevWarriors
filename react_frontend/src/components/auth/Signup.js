@@ -21,7 +21,7 @@ class Signup extends Component {
                     className="col col-sm-4 card mt-5 p-2"
                     onSubmit={handleSubmit}
                 >
-                    <h4 className="text-md-center">Sign Up</h4>
+                    <h4 className="text-md-center">Register</h4>
                     <hr/>
 
                     <fieldset className="form-group">

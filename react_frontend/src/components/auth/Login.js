@@ -23,7 +23,7 @@ class Login extends Component {
                     className="col col-sm-4 card mt-5 p-2"
                     onSubmit={handleSubmit}
                 >
-                    <h4 className="text-md-center">Please Log In</h4>
+                    <h4 className="text-md-center">Log In</h4>
                     <hr/>
 
                     <fieldset className="form-group">
@@ -35,7 +35,7 @@ class Login extends Component {
 
                     <fieldset className="form-group">
                         <Field name="password" label="Password" component={renderField}
-                               type="password"  validate={[required({message: "This field is required."})]}
+                               type="password" validate={[required({message: "This field is required."})]}
                         />
                     </fieldset>
 

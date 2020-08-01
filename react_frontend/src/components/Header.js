@@ -29,7 +29,7 @@ class Header extends Component {
                         <Link className="nav-link" to="/login">Login</Link>
                     </li>,
                     <li className="nav-item" key="signup">
-                        <Link className="nav-link" to="/signup">Sign Up</Link>
+                        <Link className="nav-link" to="/signup">Register</Link>
                     </li>
                 ]
             );
@@ -39,7 +39,7 @@ class Header extends Component {
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <Link to="/" className="navbar-brand">Auth Demo</Link>
+                <Link to="/" className="navbar-brand">MGNREGA</Link>
                 <ul className="navbar-nav">
                     {this.renderLinks()}
                 </ul>
