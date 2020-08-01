@@ -16,12 +16,15 @@ class Header extends Component {
                     <li className="nav-item" key="profile">
                         <Link className="nav-link" to="/profile">Profile</Link>
                     </li>,
+                    <li className="nav-item" key="imageCapture">
+                        <Link className="nav-link" to="/image_capture">Image Capture</Link>
+                    </li>,
+                    <li className="nav-item" key="attendance">
+                        <Link className="nav-link" to="/attendance">Attendance</Link>
+                    </li>,
                     <li className="nav-item" key="logout">
                         <Link className="nav-link" to="/logout">Logout</Link>
                     </li>,
-                    <li className="nav-item" key="imageCapture">
-                        <Link className="nav-link" to="/image_upload">Image Capture</Link>
-                    </li>
                 ]
             );
 

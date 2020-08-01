@@ -1,38 +1,36 @@
-import React from "react";
-import Webcam from "react-webcam";
-import ReactS3Uploader from "react-s3-uploader";
+import React, { Component } from 'react'
+import ReactS3 from 'react-s3';
 
-const videoConstraints = {
-  width: 1280,
-  height: 720,
-  facingMode: "user",
+const config = {
+  bucketName: "mk203devind",
+  // dirName: "workers" /* optional */,
+  region: "ap-south-1",
+  accessKeyId: "",
+  secretAccessKey: "",
+  // s3Url: 'https:/your-custom-s3-url.com/', /* optional */
 };
 
-export default function WebcamCapture() {
-  const webcamRef = React.useRef(null);
-
-  const [imgSrc, setImgSrc] = React.useState(null);
-
-  const capture = React.useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot({
-      width: 500,
-      height: 300,
-    });
-    setImgSrc(imageSrc);
-  }, [webcamRef, setImgSrc]);
-
-  return (
-    <div>
-      <Webcam
-        audio={false}
-        height={300}
-        ref={webcamRef}
-        screenshotFormat="image/jpeg"
-        width={600}
-        videoConstraints={videoConstraints}
-      />
-      <button onClick={capture}>Capture photo</button>
-      {imgSrc && <img src={imgSrc} />}
-    </div>
-  );
+export class ImageCapture extends Component {
+    constructor() {
+        super();
+    }
+    upload(e) {
+        console.log(e.target.files[0]);
+        ReactS3.uploadFile(e.target.files[0], config)
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((err) => {
+                alert(err);
+            })
+    }
+    render() {
+        return (
+            <div>
+                <input type="file" onChange={this.upload}/>
+            </div>
+        )
+    }
 }
+
+export default ImageCapture
