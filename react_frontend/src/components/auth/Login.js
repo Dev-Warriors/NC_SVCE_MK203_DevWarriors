@@ -20,7 +20,7 @@ class Login extends Component {
             <div className="row justify-content-center">
 
                 <form
-                    className="col col-sm-4 card mt-5 p-2"
+                    className="col col-sm-5 card mt-5 p-2"
                     onSubmit={handleSubmit}
                 >
                     <h4 className="text-md-center">Log In</h4>
