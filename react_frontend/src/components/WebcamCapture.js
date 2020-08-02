@@ -29,7 +29,7 @@ export default function WebcamCapture() {
     });
     setImgSrc(imageSrc);
     console.log(JSON.stringify(imageSrc));
-    fetch('http://127.0.0.1:8000/images/', {
+    fetch('http://127.0.0.1:8000/user_profile/image/', {
       method: 'POST',
       body: JSON.stringify(imageSrc)
     })
