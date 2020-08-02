@@ -39,7 +39,7 @@ class AwsRekog:
     					},
     		TargetImage={
         			'S3Object':{
-            		'Bucket': 'mk203devind',
+            		'Bucket': 'mk203devw',
             		'Name': source
             
         						}
@@ -58,7 +58,7 @@ class AwsRekog:
 		if object_name is None:
 			object_name = target
 		try:
-			bucket = 'mk203devind'
+			bucket = 'mk203devw'
 			s3_client.upload_file(target, bucket, object_name)
 			print("Write successful!")
 		except Exception as e:

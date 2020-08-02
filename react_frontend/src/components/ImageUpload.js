@@ -6,8 +6,8 @@ const config = {
   bucketName: "mk203devind",
   // dirName: "workers" /* optional */,
   region: "ap-south-1",
-  accessKeyId: process.env.ACCESS_KEY,
-  secretAccessKey: process.env.SECRET_KEY,
+  accessKeyId: "AKIARPQ22V4BYOGPQ5ZL",
+  secretAccessKey: "P0nEtch33zk2qXpri91FING8CBemGXWKqPJzovF0",
   // s3Url: 'https:/your-custom-s3-url.com/', /* optional */
 };
 
@@ -34,7 +34,7 @@ export class ImageCapture extends Component {
 
   render() {
     return (
-      <div class="mt-5">
+      <div className="mt-5">
         <input type="file" onChange={this.onChange} /><br/><br/>
         <img style={{ width: "500px", height: "250px" }} src={this.state.file} />
       </div>

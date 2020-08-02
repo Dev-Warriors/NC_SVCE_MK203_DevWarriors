@@ -24,6 +24,7 @@ def takeAttendence(request):
     recog = AwsRekog(user_id, bytes(base64_img[22:],'utf-8'))
     recog.convert()
     result = recog.compare()
+    print(result)
     attendence = Attendence()
     attendence.emp_id = user_id 
     if len(result['FaceMatches']) == 0:

@@ -202,6 +202,7 @@ export function updateUserProfile(formValues, dispatch, props) {
             throw new SubmissionError(processedError);
         });
 }
+
 // util functions
 function processServerError(error) {
     return  Object.keys(error).reduce(function(newDict, key) {

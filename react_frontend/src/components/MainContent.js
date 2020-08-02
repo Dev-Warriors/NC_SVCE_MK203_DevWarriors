@@ -13,7 +13,7 @@ import PasswordChange from "./auth/PasswordChange";
 import PasswordReset from "./auth/PasswordReset";
 import PasswordResetDone from "./auth/PasswordResetDone";
 import PasswordResetConfirm from "./auth/PasswordResetConfirm";
-import ImageCapture from "./ImageCapture";
+import ImageUpload from "./ImageUpload";
 import Attendance from "./Attendance";
 import ViewAttendance from "./ViewAttendance";
 import NoMatch from "./NoMatch";
@@ -33,7 +33,7 @@ const MainContent = () => (
             <Route path="/profile" component={RequireAuth(UserProfile)}/>
             <Route path="/profile_edit" component={RequireAuth(UserProfileEdit)}/>
             <Route path="/change_password" component={RequireAuth(PasswordChange)}/>
-            <Route path="/image_capture" component={RequireAuth(ImageCapture)}/>
+            <Route path="/image_capture" component={RequireAuth(ImageUpload)}/>
             <Route path="/attendance" component={RequireAuth(Attendance)}/>
             <Route path="/view_attendance" component={RequireAuth(ViewAttendance)}/>
             <Route component={NoMatch}/>
