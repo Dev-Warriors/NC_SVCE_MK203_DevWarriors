@@ -7,4 +7,5 @@ from . import views
 
 urlpatterns = [
     url(r'image/', views.takeAttendence, name="takeAttendence"),
+    url(r'(?P<work_id>[0-9]+)/workers/', views.workers, name="ListWorkers"),
 ]
