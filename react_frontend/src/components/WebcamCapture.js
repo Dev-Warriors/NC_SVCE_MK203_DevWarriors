@@ -23,7 +23,7 @@ export default function WebcamCapture() {
 
     const data = { imageSrc, fileName };
     console.log(JSON.stringify({ data }));
-    fetch("http://127.0.0.1:8000/user_profile/image", {
+    fetch("http://127.0.0.1:8000/user_profile/image/", {
       method: "POST",
       body: JSON.stringify({
         data,
