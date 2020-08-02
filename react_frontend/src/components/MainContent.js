@@ -15,6 +15,7 @@ import PasswordResetDone from "./auth/PasswordResetDone";
 import PasswordResetConfirm from "./auth/PasswordResetConfirm";
 import ImageCapture from "./ImageCapture";
 import Attendance from "./Attendance";
+import ViewAttendance from "./ViewAttendance";
 import NoMatch from "./NoMatch";
 
 const MainContent = () => (
@@ -34,6 +35,7 @@ const MainContent = () => (
             <Route path="/change_password" component={RequireAuth(PasswordChange)}/>
             <Route path="/image_capture" component={RequireAuth(ImageCapture)}/>
             <Route path="/attendance" component={RequireAuth(Attendance)}/>
+            <Route path="/view_attendance" component={RequireAuth(ViewAttendance)}/>
             <Route component={NoMatch}/>
         </Switch>
     </div>

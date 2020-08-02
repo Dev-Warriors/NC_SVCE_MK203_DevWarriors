@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getUserProfile } from "../../actions/authActions";
+import { getUserProfile } from "../actions/authActions";
 
-class UserProfile extends Component {
+class ViewAttendance extends Component {
 
     static propTypes = {
         getUserProfile: PropTypes.func.isRequired,
@@ -15,7 +15,7 @@ class UserProfile extends Component {
         this.props.getUserProfile();
     }
 
-    renderUser() {
+    render() {
         const user = this.props.user;
         if (user) {
             return (
@@ -23,7 +23,7 @@ class UserProfile extends Component {
                     <p>Username: {user.username}</p>
                     {/* <p>First Name: {user.first_name}</p>
                     <p>Last Name: {user.last_name}</p> */}
-                    <p>Email ID: {user.email}</p>
+                    <p>Days Present: 1</p>
                     {/* <p>Website: {user.website}</p> */}
                 </div>
             );
@@ -31,17 +31,17 @@ class UserProfile extends Component {
         return null;
     }
 
-    render() {
-        return (
-            <div>
-                {this.renderUser()}
-                {" "}
-                <hr />
-                <Link className="btn btn-primary mr-2" to="/profile_edit">Update Profile</Link>
-                <Link className="btn btn-primary" to="/change_password">Change Password</Link>
-            </div>
-        );
-    }
+    // render() {
+    //     return (
+    //         <div>
+    //             {this.renderUser()}
+    //             {" "}
+    //             <hr />
+    //             <Link className="btn btn-primary mr-2" to="/profile_edit">Update Profile</Link>
+    //             <Link className="btn btn-primary" to="/change_password">Change Password</Link>
+    //         </div>
+    //     );
+    // }
 }
 
 function mapStateToProps(state) {
@@ -50,4 +50,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getUserProfile } )(UserProfile);
+export default connect(mapStateToProps, { getUserProfile } )(ViewAttendance);

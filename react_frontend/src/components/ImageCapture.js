@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactS3 from "react-s3";
-require('dotenv').config();
+require("dotenv").config();
 
 const config = {
   bucketName: "mk203devind",
@@ -28,15 +28,15 @@ export class ImageCapture extends Component {
         alert(err);
       });
     this.setState({
-      file: URL.createObjectURL(e.target.files[0])
+      file: URL.createObjectURL(e.target.files[0]),
     });
   }
 
   render() {
     return (
       <div class="mt-5">
-        <input type="file" onChange={this.onChange} />
-        <img style={{ width: "100%" }} src={this.state.file} />
+        <input type="file" onChange={this.onChange} /><br/><br/>
+        <img style={{ width: "500px", height: "250px" }} src={this.state.file} />
       </div>
     );
   }
