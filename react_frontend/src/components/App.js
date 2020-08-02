@@ -4,6 +4,8 @@ import { Notifs } from 'redux-notifications';
 import Header from "./Header";
 import MainContent from "./MainContent";
 
+import "../styles/style.css"
+
 export default class App extends Component {
     render() {
         return (

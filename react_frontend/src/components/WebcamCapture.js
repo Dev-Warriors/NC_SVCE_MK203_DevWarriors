@@ -1,8 +1,6 @@
 import React from "react";
 import Webcam from "react-webcam";
-import ReactS3Uploader from "react-s3-uploader";
 import S3FileUpload from "react-s3";
-import base64Img from 'base64-img'
 
 const videoConstraints = {
   width: 1280,
@@ -30,11 +28,13 @@ export default function WebcamCapture() {
       height: 300,
     });
     setImgSrc(imageSrc);
-    // var imageExtension = imgUpload.split(';')[0].split('/');
-    // imageExtension = imageExtension[imageExtension.length - 1];
-    S3FileUpload.uploadFile(`${imgUpload}.${imageExtension}`, config)
-      .then((data) => console.log(data))
-      .catch((err) => console.error(err));
+    console.log(JSON.stringify(imageSrc));
+    fetch('http://127.0.0.1:8000/images/', {
+      method: 'POST',
+      body: JSON.stringify(imageSrc)
+    })
+    .then( res => console.log(res))
+    .catch(error => console.log(error))  
   }, [webcamRef, setImgSrc]);
 
   return (
@@ -44,10 +44,12 @@ export default function WebcamCapture() {
         height={300}
         ref={webcamRef}
         screenshotFormat="image/jpeg"
-        width={600}
+        width={500}
         videoConstraints={videoConstraints}
       />
+      <br/>
       <button onClick={capture}>Capture photo</button>
+      <br/><br/>
       {imgSrc && <img src={imgSrc} />}
     </div>
   );
