@@ -11,11 +11,11 @@ class UserProfile(models.Model):
 
 
 class Attendence(models.Model):
-    emp_id = models.CharField(max_length=30)
+    worker = models.OneToOneField(User)
     date_time = models.DateTimeField(auto_now=True)
-    present_absent = models.BooleanField(default=False)
+    is_present = models.BooleanField(default=False)
     img_id = models.CharField(max_length=100)
     location = models.CharField(max_length=100,null=True,blank=True)
     
     def __str__(self):
-        return self.emp_id
+        return str(self.worker.id) + "---- isPresent ---" + str(self.is_present)

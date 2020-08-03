@@ -7,7 +7,6 @@ import json
 from Rekog import AwsRekog
 from datetime import datetime
 
-
 User = get_user_model()
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -26,13 +25,43 @@ def takeAttendence(request):
     result = recog.compare()
     print(result)
     attendence = Attendence()
-    attendence.emp_id = user_id 
+    attendence.worker = User.objects.get(id=user_id) 
     if len(result['FaceMatches']) == 0:
-        attendence.present_absent = False
+        attendence.is_present = False
     else:
-        attendence.present_absent = True
+        attendence.is_present = True
     today = datetime.now().strftime("%d_%b_%Y")
     attendence.img_id = user_id + today
     attendence.location = 'chennai'
     attendence.save()
     return HttpResponse("asdf")
+
+def workers(request, work_id):
+    resp = []
+    users = User.objects.all()
+    for user in users: 
+        attendences = Attendence.objects.filter(worker=user)
+        days_present = 0
+        attendences_resp = []
+        # calculate days present and build attendences reponse object
+        for attendence in attendences: 
+            if attendence.is_present:
+                days_present += 1
+            attendence_resp = {
+                "location": attendence.location,
+                "timestamp": str(attendence.date_time),
+            }
+            attendences_resp.append(attendence_resp)
+            
+        user_resp = {
+            "name" : user.username,
+            "days_present" : days_present,
+            # todo
+            "profile_url": ""
+        }
+        resp.append({
+            "user": user_resp,
+            "attendences" : attendences_resp
+        })
+        
+    return HttpResponse(json.dumps(resp), content_type="application/json") 

@@ -8,7 +8,7 @@ import AccordionActions from "@material-ui/core/AccordionActions";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Chip from "@material-ui/core/Chip";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Avatar from "@material-ui/core/Avatar";
 
@@ -47,9 +47,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DetailedAccordion(props) {
-  
+export default function DetailedAccordion() {
   const classes = useStyles();
+   if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(function(position) {
+        const lat = position.coords.latitude;
+        // console.log("Longitude is :", position.coords.longitude);
+        document.getElementById("latitude");
+      });
+    }
   return (
     <div className={classes.root}>
       <Accordion>
@@ -70,13 +76,13 @@ export default function DetailedAccordion(props) {
               Worker ID: 
             </Typography>
             <Typography className={classes.secondaryHeading}>
-              Days Present: 5
+              Days Present: 1
             </Typography>
             <Typography className={classes.secondaryHeading}>
               Timestamp: 101
             </Typography>
             <Typography className={classes.secondaryHeading}>
-              Location: 101
+              Location: <div id="latitude"></div>
             </Typography>
           </div>
         </AccordionSummary>
@@ -90,7 +96,7 @@ export default function DetailedAccordion(props) {
           </div>
           <div className={clsx(classes.column, classes.helper)}>
             <Typography variant="caption">
-              Work Region: Tamil Nadu
+              Work Region: Chennai
               <br />
               {/* <a href="#secondary-heading-and-columns" className={classes.link}>
                 Learn more
