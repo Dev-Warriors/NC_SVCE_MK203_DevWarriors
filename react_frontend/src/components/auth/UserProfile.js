@@ -17,19 +17,14 @@ class UserProfile extends Component {
 
     renderUser() {
         const user = this.props.user;
-        console.log(user);
         if (user) {
             return (
-                <div className="mx-2">
-                    <h4>username: {user.username}</h4>
-                    <h4>First Name: {user.first_name}</h4>
-                    <h4>Last Name: {user.last_name}</h4>
-                    <h4>email: {user.email}</h4>
-                    <h4>Website: {user.website}</h4>
-                    <hr />
-                    <h4>About Myself:</h4>
-                    <p>{user.about}</p>
-
+                <div className="mx-2 mt-5">
+                    <p>Username: {user.username}</p>
+                    {/* <p>First Name: {user.first_name}</p>
+                    <p>Last Name: {user.last_name}</p> */}
+                    <p>Email ID: {user.email}</p>
+                    {/* <p>Website: {user.website}</p> */}
                 </div>
             );
         }
