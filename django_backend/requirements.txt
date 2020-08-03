@@ -14,3 +14,7 @@ requests==2.18.4
 requests-oauthlib==0.8.0
 six==1.11.0
 urllib3==1.22
+twilio==6.44.1
+python-dotenv==0.14.0
+geocoder==1.38.1
+boto3==1.14.33
