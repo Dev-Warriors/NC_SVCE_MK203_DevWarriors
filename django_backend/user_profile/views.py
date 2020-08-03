@@ -6,8 +6,23 @@ from .models import Attendence
 import json
 from Rekog import AwsRekog
 from datetime import datetime
+from twilio.rest import Client
+from django.conf import Settings
+from project import settings
 
 User = get_user_model()
+
+def broadcast_sms_not_present():
+    message_to_broadcast = ("Seems like you're attendence process did not go through! Meet your Panchayat officer.")
+    client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+    client.messages.create(to="+919840931301",from_=settings.TWILIO_NUMBER,body=message_to_broadcast)
+    return HttpResponse("messages sent!", 200)
+
+def broadcast_sms_present():
+    message_to_broadcast = ("Attendance for mngrega registered successfully")
+    client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+    client.messages.create(to="+919840931301",from_=settings.TWILIO_NUMBER,body=message_to_broadcast)
+    return HttpResponse("messages sent!", 200)
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -27,8 +42,10 @@ def takeAttendence(request):
     attendence = Attendence()
     attendence.worker = User.objects.get(id=user_id) 
     if len(result['FaceMatches']) == 0:
+        # broadcast_sms_not_present()
         attendence.is_present = False
     else:
+        # broadcast_sms_present()
         attendence.is_present = True
     today = datetime.now().strftime("%d_%b_%Y")
     attendence.img_id = user_id + today
@@ -39,6 +56,7 @@ def takeAttendence(request):
 def workers(request, work_id):
     resp = []
     users = User.objects.all()
+    print("debug")
     for user in users: 
         attendences = Attendence.objects.filter(worker=user)
         days_present = 0
@@ -63,5 +81,4 @@ def workers(request, work_id):
             "user": user_resp,
             "attendences" : attendences_resp
         })
-        
     return HttpResponse(json.dumps(resp), content_type="application/json") 

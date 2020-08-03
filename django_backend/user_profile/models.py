@@ -11,7 +11,7 @@ class UserProfile(models.Model):
 
 
 class Attendence(models.Model):
-    worker = models.OneToOneField(User)
+    worker = models.ForeignKey(User) 
     date_time = models.DateTimeField(auto_now=True)
     is_present = models.BooleanField(default=False)
     img_id = models.CharField(max_length=100)
