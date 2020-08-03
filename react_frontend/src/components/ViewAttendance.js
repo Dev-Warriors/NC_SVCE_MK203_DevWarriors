@@ -16,8 +16,10 @@ class ViewAttendance extends Component {
   constructor() {
     super();
     this.state = {
-      name: "test",
-      days_present: "0",
+      name1: "test",
+      name2: "test2",
+      days1: "0",
+      days2: "0",
       location: "Chennai",
       timestamp: "2020-08-03 11:19:02.287237+00:00",
       // user: [
@@ -40,14 +42,17 @@ class ViewAttendance extends Component {
       .get(`http://127.0.0.1:8000/user_profile/work/1/workers/`)
       .then((res) => {
         this.setState({
-          name: res.data[0].user.name,
-          days_present: res.data[0].user.days_present,
-          // location: res.data[0].attendences.location,
-          // timestamp: res.data[0].attendences.timestamp,
+          name1: res.data[0].user.name,
+          name2: res.data[1].user.name,
+          days1: res.data[0].user.days_present,
+          days2: res.data[1].user.days_present,
+          location: res.data[0].attendences[0].location,
+          timestamp: res.data[0].attendences[0].timestamp,
         });
         //   Object.keys(parsed).forEach(function (key) {
         //     console.log(parsed[key].user.name);
         //   });
+        // console.log(this.state);
         console.log(this.state);
       })
       .catch((err) => console.log(err));
@@ -75,8 +80,8 @@ class ViewAttendance extends Component {
               />
             </div>
             <div className="d-flex col-md-4">
-              <p><strong>Worker Name:</strong> {this.state.name}<br/>
-              <strong>Days Present:</strong> {this.state.days_present}<br/>
+              <p><strong>Worker Name:</strong> {this.state.name1}<br/>
+              <strong>Days Present:</strong> {this.state.days1}<br/>
               <strong>Timestamp:</strong> {this.state.timestamp}<br/>
               <strong>Location:</strong> {this.state.location}</p>
             </div>
@@ -124,10 +129,10 @@ class ViewAttendance extends Component {
               />
             </div>
             <div className="d-flex col-md-4">
-              <p><strong>Worker Name:</strong> test<br/>
-              <strong>Days Present:</strong> 0<br/>
-              <strong>Timestamp:</strong> <br/>
-              <strong>Location:</strong> </p>
+              <p><strong>Worker Name:</strong> {this.state.name2}<br/>
+              <strong>Days Present:</strong> {this.state.days2}<br/>
+              <strong>Timestamp:</strong> {this.state.timestamp}<br/>
+              <strong>Location:</strong> {this.state.location}</p>
             </div>
           </AccordionSummary>
           <AccordionDetails style={{ alignItems: "center" }}>
