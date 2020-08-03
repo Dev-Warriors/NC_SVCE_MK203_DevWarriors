@@ -27,6 +27,3 @@
 
 ## MOCK - FIGMA
 https://www.figma.com/proto/rc6ML40znYyhUKdpq22eOi/Sih-Final-mock?node-id=107%3A1594&scaling=scale-down
-
-## ARCHITECTURE DIAGRAM
-https://drive.google.com/file/d/1hLKrC1Y_18q9TN5sFzDCaX_ZEBrvstLq/view
