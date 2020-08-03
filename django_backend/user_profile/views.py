@@ -9,6 +9,7 @@ from datetime import datetime
 from twilio.rest import Client
 from django.conf import Settings
 from project import settings
+import geocoder
 
 User = get_user_model()
 
@@ -42,14 +43,15 @@ def takeAttendence(request):
     attendence = Attendence()
     attendence.worker = User.objects.get(id=user_id) 
     if len(result['FaceMatches']) == 0:
-        # broadcast_sms_not_present()
-        attendence.is_present = False
+        broadcast_sms_not_present()
+        # attendence.is_present = False
     else:
         # broadcast_sms_present()
         attendence.is_present = True
     today = datetime.now().strftime("%d_%b_%Y")
     attendence.img_id = user_id + today
-    attendence.location = 'chennai'
+    location = geocoder.ip('me')
+    attendence.location = location.latlng
     attendence.save()
     return HttpResponse("asdf")
 
@@ -66,6 +68,7 @@ def workers(request, work_id):
             if attendence.is_present:
                 days_present += 1
             attendence_resp = {
+                "is_present": attendence.is_present,
                 "location": attendence.location,
                 "timestamp": str(attendence.date_time),
             }

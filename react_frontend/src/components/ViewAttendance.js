@@ -16,12 +16,12 @@ class ViewAttendance extends Component {
   constructor() {
     super();
     this.state = {
-      name1: "test",
-      name2: "test2",
-      days1: "0",
-      days2: "0",
-      location: "Chennai",
-      timestamp: "2020-08-03 11:19:02.287237+00:00",
+      name1: "",
+      name2: "",
+      days1: "",
+      days2: "",
+      location: "",
+      timestamp: "",
       // user: [
       //   {
       //     name: "Zero to one",
@@ -46,8 +46,10 @@ class ViewAttendance extends Component {
           name2: res.data[1].user.name,
           days1: res.data[0].user.days_present,
           days2: res.data[1].user.days_present,
-          location: res.data[0].attendences[0].location,
-          timestamp: res.data[0].attendences[0].timestamp,
+          location1: res.data[0].attendences[res.data[0].attendences.length-1].location,
+          location2: res.data[1].attendences[res.data[1].attendences.length-1].location,
+          timestamp1: res.data[0].attendences[res.data[0].attendences.length-1].timestamp,
+          timestamp2: res.data[1].attendences[res.data[1].attendences.length-1].timestamp,
         });
         //   Object.keys(parsed).forEach(function (key) {
         //     console.log(parsed[key].user.name);
@@ -62,10 +64,6 @@ class ViewAttendance extends Component {
     return (
       <div className="mx-2 mt-5">
       <h2>Worker Attendance</h2>
-        {/* <p>Name: {this.state.name}</p>
-        <p>Days Present: {this.state.days_present}</p>
-        <p>{this.state.location}</p>
-        <p>{this.state.timestamp}</p> */}
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -82,8 +80,8 @@ class ViewAttendance extends Component {
             <div className="d-flex col-md-4">
               <p><strong>Worker Name:</strong> {this.state.name1}<br/>
               <strong>Days Present:</strong> {this.state.days1}<br/>
-              <strong>Timestamp:</strong> {this.state.timestamp}<br/>
-              <strong>Location:</strong> {this.state.location}</p>
+              <strong>Timestamp:</strong> {this.state.timestamp1}<br/>
+              <strong>Location:</strong> {this.state.location1}</p>
             </div>
           </AccordionSummary>
           <AccordionDetails style={{ alignItems: "center" }}>
@@ -131,8 +129,8 @@ class ViewAttendance extends Component {
             <div className="d-flex col-md-4">
               <p><strong>Worker Name:</strong> {this.state.name2}<br/>
               <strong>Days Present:</strong> {this.state.days2}<br/>
-              <strong>Timestamp:</strong> {this.state.timestamp}<br/>
-              <strong>Location:</strong> {this.state.location}</p>
+              <strong>Timestamp:</strong> {this.state.timestamp2}<br/>
+              <strong>Location:</strong> {this.state.location2}</p>
             </div>
           </AccordionSummary>
           <AccordionDetails style={{ alignItems: "center" }}>

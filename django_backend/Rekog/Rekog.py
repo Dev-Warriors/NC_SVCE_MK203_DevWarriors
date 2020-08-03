@@ -39,9 +39,8 @@ class AwsRekog:
     					},
     		TargetImage={
         			'S3Object':{
-            		'Bucket': 'mk203devw',
+            		'Bucket': 'mk203devind',
             		'Name': source
-            
         						}
     					},
 					)

@@ -47,7 +47,8 @@ export default function WebcamCapture() {
       <input type="text" onChange={(e) => setFileName(e.target.value)} placeholder="User ID"/> <br/><br/>
       <button type="button" className="btn btn-primary btn-sm" style={{cursor: "pointer"}} onClick={capture}>Capture Photo</button>
       <br /><br />
-      {imgSrc && <img src={imgSrc} />}<br/><br/><br/>
+      {imgSrc && <img src={imgSrc} />}
+      <br/><br/><br/>
     </div>
   );
 }
