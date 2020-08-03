@@ -1,7 +1,9 @@
+# SIH 2020 DEV_WARRIORS - ATTENDANCE MANAGEMENT WITH FACIAL RECOGNITION
+
 ## BACKEND
-Django v1.11
+- Django v1.11
 
 ## FRONTEND
-ReactJS v
-npm v6.14.6
-node v12.18.3
+- ReactJS v
+- npm v6.14.6
+- node v12.18.3
